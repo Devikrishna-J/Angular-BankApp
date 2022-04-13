@@ -1,0 +1,60 @@
+<nav class="navbar navbar-dark bg-dark "> <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <a class="navbar-brand  " href="#" style="color:rgb(207, 124, 15);"><b>&#169; NATIONAL Bank Pvt.Ltd </b></a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+    </ul></div>
+    <div class="d-flex">
+      
+        <button class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+      </div>
+    </div>    
+  </nav>
+  <div class="container col-md-12 mt-0 ">   
+    
+      <div class="row">
+          <h1 style="color: seashell;text-align: center;">Transaction History</h1>
+      </div> 
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <!--display transaction history-->
+            <div class="row">
+                <table class="table table-dark table-sm table-striped table-bordered border-warning">
+                    <thead>
+                        <tr>
+                            <th>Sl No:</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let transaction of transactions;let i=index">
+                            <th>{{i+1}}</th>
+                            <th>{{transaction.type}}</th>
+                            <th>{{transaction.amount}}</th>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <a class="home" routerLink="/dashboard" style="text-align: center;">Home</a>
+            </div>
+        </div>
+        <div class="col-4"></div>
+       
+    </div>      
+
+</div>
+

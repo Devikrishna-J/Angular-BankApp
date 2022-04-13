@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("./assets/image1.jpg");
+    
+    height: 100%;
+    /*  display: flex;   
+    align-items: center;
+    min-height: 100vh;*/
+    
+    
+}
+.container{
+    height: 50%;
+    justify-content: center;
+    align-content: center;
+    }
+#login_div,.register_div{
+   /* background-color: rgb(100, 98, 98);*/
+    background: linear-gradient(#2b2a2a,#e6dcdc);
+}
+.btn{
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    border-radius: 6px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    height: 40px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    border: 0;
+}
+.btn:hover {
+    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+    /*background-color: blanchedalmond;*/
+  }
+h1{
+
+   /* font-style: linear-gradient(-180deg, #FF7E31, #E62C03);;*/
+    color: #2e1404;
+}
+ul{
+    color:rgb(207, 124, 15);
+}

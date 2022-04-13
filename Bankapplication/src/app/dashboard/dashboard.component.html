@@ -1,0 +1,147 @@
+<nav class="navbar navbar-dark bg-dark "> <div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <a class="navbar-brand  " href="#" style="color:rgb(207, 124, 15);"><b>&#169; NATIONAL Bank Pvt.Ltd </b></a>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+  </ul></div>
+  <div class="d-flex">
+    
+     
+      <button class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+    </div>
+  </div>
+  <!--<span class="quote text-light">Giving you freedom...</span>-->
+</nav>
+<!--String Interpolation syntax: {{}}; eg:{{user}}-->
+<h3 style="color: rgb(55, 221, 4);">Welcome {{user}}</h3>
+<!--Angular pipe: to transform data to another format- date is the pipe operator & short or medium etc is argument-->
+<h5 style="color: white">Login Details: {{lDate|date:'short'}}</h5>
+<a routerLink="/transaction">Transaction History</a>
+
+<button class="btn btn-outline-success b1" type="submit" (click)="deleteAcc()">Delete my Account</button>
+<div></div>
+<!--show child component in parent by adding child's selector
+[item]="acno" :- property binding to bind child & parent components
+(onCancel)="cancelFromParent()":- user defined event called onCancel -->
+<app-deleteconfirmation (onDelete)="deleteFromParent($event)" (onCancel)="cancelFromParent()" [item]="acno"></app-deleteconfirmation>
+
+
+<!--deposit-->
+<!--Attribute directive- prdefined/built in attribute-[ngClass]-based on condition we can apply style to html-->
+
+<div [ngClass]="acno?'c1':''" class="container col-md-12 mt-0 ">       
+<form action="" [formGroup]="depositForm"  (ngSubmit)="deposit()" >
+  <div class="row">
+      <div class="mb-5  d-inline p-2  d-flex justify-content-center">          
+      </div>
+      <div class="col-4">               
+      </div>
+      <div class="login_div col-4 border border-dark border-1  p-2 text-dark bg-opacity-25" id="login_div">
+          <!--<div class="mb-3 text-center text-danger d-inline p-2 text-uppercase border border-dark">-->
+              <div class="mb-3 text-center text-dark d-inline p-2 " >
+
+                <!--Userdefined attribte directives-to style html tag - eg:appHighlight-->
+                  <h1 appHighlight>Deposit</h1>
+              </div>
+              <div class="mb-3">
+                 <!--Property Binding - syntax:[]-->
+                 <!--Event binding as arguments- syntax:(event)="function call($event)"-eg:(change)="get_acno($event)" -->
+                 <!--Template reference variable-#acno-->
+                 <!--Two way binding- [(ngmodel)]="variablename"-eg:[(ngmodel)]="acno"-->
+                  <input type="text" id="dep_acno" name="actno" formControlName="acno"  placeholder="Your Account Number" class="form-control">
+              </div>
+              <!--show error msg-->
+              <div *ngIf="(this.depositForm.get('acno')?.touched ||this.depositForm.get('acno')?.dirty)&&this.depositForm.get('acno')?.errors" style="color: red;">Invalid Account Number</div>
+              <div class="mb-3">  
+                  <!--Template reference variable-#pswd-->
+                  <!--Two way binding- [(ngmodel)]="variablename"-eg:[(ngmodel)]="pswd"-->
+                  <input type="password" id="dep_password" name="pwd" formControlName="pswd" placeholder="Enter password" class="form-control">
+              </div>   
+              <!--show error msg-->
+              <div *ngIf="(this.depositForm.get('pswd')?.touched ||this.depositForm.get('pswd')?.dirty)&&this.depositForm.get('pswd')?.errors" style="color: red;">Invalid Password</div>   
+              <div class="mb-3">  
+               
+                <input type="text" id="dep_amnt" name="amnt" formControlName="amnt" placeholder="Amount" class="form-control">
+            </div>   
+            <!--show error msg-->  
+            <div *ngIf="(this.depositForm.get('amnt')?.touched ||this.depositForm.get('amnt')?.dirty)&&this.depositForm.get('amnt')?.errors" style="color: red;">Amount should be Number</div>      
+              <div class="mb-3 text-center">    
+                <!--Even binding- syntax:(event)="function call"--> 
+                <!--js - onclick="bank.authenticate()", onclick="return bank.authenticate()"-->           
+                  <button  type="submit"  class="btn btn-success btn-pressed " >Deposit</button>
+                  
+              </div>
+          
+          <!--</div>-->
+     
+      </div>
+
+  </div></form>
+</div>
+
+
+<!--Withdraw-->
+<!--Attribute directive- prdefined/built in attribute-[ngClass] - based on condition we can apply style to html-->
+
+<div [ngClass]="acno?'c1':''" class="container col-md-12 mt-0 ">       
+  <form action="" (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
+    <div class="row">
+        <div class="mb-5  d-inline p-2  d-flex justify-content-center">          
+        </div>
+        <div class="col-4">               
+        </div>
+        <div class="login_div col-4 border border-dark border-1  p-2 text-dark bg-opacity-25" id="login_div">
+            <!--<div class="mb-3 text-center text-danger d-inline p-2 text-uppercase border border-dark">-->
+                <div class="mb-3 text-center text-dark d-inline p-2 " >
+
+                  <!--Userdefined attribte directives-to style html tag - eg:appHighlight-->
+                    <h1 appHighlight>Withdraw</h1>                    
+                </div>
+
+                <div class="mb-3">
+                   <!--Property Binding - syntax:[]-->
+                   <!--Event binding as arguments- syntax:(event)="function call($event)"-eg:(change)="get_acno($event)" -->
+                   <!--Template reference variable-#acno-->
+                   <!--Two way binding- [(ngmodel)]="variablename"-eg:[(ngmodel)]="acno"-->
+                    <input type="text" id="w_acno" name="actno" formControlName="acno1"  placeholder="Your Account Number" class="form-control">
+                </div>
+                <!--show error msg-->
+                <div *ngIf="(this.withdrawForm.get('acno1')?.touched ||this.withdrawForm.get('acno1')?.dirty)&&this.withdrawForm.get('acno1')?.errors" style="color: red;">Invalid Account Number</div>
+                <div class="mb-3">  
+                    <!--Template reference variable-#pswd-->
+                    <!--Two way binding- [(ngmodel)]="variablename"-eg:[(ngmodel)]="pswd"-->
+                    <input type="password" id="w_password" name="pwd" formControlName="pswd1" placeholder="Enter password" class="form-control">
+                </div> 
+                <!--show error msg-->  
+                <div *ngIf="(this.withdrawForm.get('pswd1')?.touched ||this.withdrawForm.get('pswd1')?.dirty)&&this.withdrawForm.get('pswd1')?.errors" style="color: red;">Invalid Password</div>    
+                <div class="mb-3">  
+                 
+                  <input type="text" id="w_amnt" name="amnt" formControlName="amnt1" placeholder="Amount" class="form-control">
+              </div> 
+              <!--show error msg-->   
+              <div *ngIf="(this.withdrawForm.get('amnt1')?.touched ||this.withdrawForm.get('amnt1')?.dirty)&&this.withdrawForm.get('amnt1')?.errors" style="color: red;">Amount should be Number</div>        
+                <div class="mb-3 text-center">    
+                  <!--Event binding- syntax:(event)="function call"- (click)="funtionName()"--> 
+                          
+                    <button type="submit"  class="btn btn-success btn-pressed " >Withdraw</button>
+                    
+                </div>
+            
+            <!--</div>-->
+       
+        </div>
+  
+    </div></form>
+  </div>

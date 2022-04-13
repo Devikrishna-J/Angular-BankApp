@@ -1,0 +1,70 @@
+<nav class="navbar navbar-dark bg-dark "> <div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <a class="navbar-brand  " href="#" style="color:rgb(207, 124, 15);"><b>&#169; NATIONAL Bank Pvt.Ltd </b></a>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+  </ul></div>
+  <div class="d-flex">
+    
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </div>
+  </div>
+  <!--<span class="quote text-light">Giving you freedom...</span>-->
+</nav>
+<!--String Interpolation syntax: {{}}-->
+<h3 style="color: white; text-align: center;">{{aim}}</h3>
+<div class="container col-md-12 mt-0 ">       
+<form action="" [formGroup]="loginForm"  (ngSubmit)="login()">
+  <div class="row">
+      <div class="mb-5  d-inline p-2  d-flex justify-content-center">          
+      </div>
+      <div class="col-4">               
+      </div>
+      <div class="login_div col-4 border border-dark border-1  p-2 text-dark bg-opacity-25" id="login_div">
+          <!--<div class="mb-3 text-center text-danger d-inline p-2 text-uppercase border border-dark">-->
+              <div class="mb-3 text-center text-dark d-inline p-2 " >
+                  <h1>Login</h1>
+              </div>
+              <div class="mb-3">
+                 <!--Property Binding - syntax:[]-->
+                 <!--Event binding as arguments- syntax:(event)="function call($event)"-eg:(change)="get_acno($event)" -->
+                 <!--Template reference variable-#acno-->
+                 <!--Two way binding- [(ngmodel)]="variablename"-eg:[(ngmodel)]="acno"-->
+                  <input type="text" id="log_acno" name="actno" formControlName="acno"  placeholder="Your Account Number" class="form-control">
+              </div>
+              <!--show error msg-->
+              <div *ngIf="(this.loginForm.get('acno')?.touched ||this.loginForm.get('acno')?.dirty)&&this.loginForm.get('acno')?.errors" style="color: red;">Invalid Account Number</div>
+              <div class="mb-3">  
+                  <!--Template reference variable-#pswd-->
+                  <!--Two way binding- [(ngmodel)]="variablename"-eg:[(ngmodel)]="pswd"-->
+                  <input type="password" id="log_password" name="pwd" formControlName="pswd" placeholder="Enter password" class="form-control">
+              </div> 
+              <!--show error msg-->
+              <div *ngIf="(this.loginForm.get('pswd')?.touched ||this.loginForm.get('pswd')?.dirty)&&this.loginForm.get('pswd')?.errors" style="color: red;">Invalid Password</div>                
+              <div class="mb-3 text-center">    
+                <!--Even binding- syntax:(event)="function call"--> 
+                <!--js - onclick="bank.authenticate()", onclick="return bank.authenticate()"-->           
+                  <button type="submit"  class="btn btn-success btn-pressed " >Login</button>
+                  <p style="color:rgb(10, 8, 8);align-items:baseline;">Not a user? <a routerLink="register">Register</a></p>
+              </div>
+          
+          <!--</div>-->
+     
+      </div>
+
+  </div></form>
+</div>
+

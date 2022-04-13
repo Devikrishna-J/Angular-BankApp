@@ -1,0 +1,7 @@
+<!--Child component of Dashboard (parent)-->
+<div *ngIf="item" class="div1">
+    <p style="color: white;font-size: 25px;">Are u sure do you want to delete this account</p>
+    <button class="btn btn-outline-danger" type="submit" (click)="delete()">Delete </button>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-outline-warning" type="submit" (click)="cancel()">Cancel</button>
+</div>
+

@@ -1,0 +1,76 @@
+<nav class="navbar navbar-dark bg-dark "> <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <a class="navbar-brand  " href="#" style="color:rgb(207, 124, 15);"><b>&#169; NATIONAL Bank Pvt.Ltd </b></a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+    </ul></div>
+    <div class="d-flex">
+      
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </div>
+    <!--<span class="quote text-light">Giving you freedom...</span>-->
+  </nav>
+  <!--String Interpolation syntax: {{}}-->
+  <h3 style="color: bisque;"></h3>
+  <div class="container col-md-12 mt-0 ">       
+  <form [formGroup]="registerForm"  (ngSubmit)="register()">
+    <!--Div for register account starts here
+             style="display: none;" -->
+             <div class="row p-5 ">
+                <div class="register_div col-4 border border-dark border-1  p-2 text-dark bg-opacity-25">
+                <div class="mb-3 text-center text-primary d-inline p-2 " >
+                    <h1>Register New Account</h1>
+                </div>
+                <div class="mb-3">
+                  <!--two way binding - [(ngModel)]="acno"-->
+                  <!--Model driven forms- formControlName- replace ngModel with formControlName-->
+                    <input type="text" id="acc_no" name="actno" formControlName="acno" placeholder="Enter Account Number" class="form-control">
+                </div>
+                <!--show error msg-->
+                <div *ngIf="(this.registerForm.get('acno')?.touched ||this.registerForm.get('acno')?.dirty)&&this.registerForm.get('acno')?.errors" style="color: red;">Invalid Account Number</div>
+                <div class="mb-3">
+                    <input type="text" id="acc_holder" name="actholder" formControlName="acholder" placeholder="Enter Account holder Name" class="form-control">
+                </div>
+                <!--show error msg-->
+                <div *ngIf="(this.registerForm.get('acholder')?.touched ||this.registerForm.get('acholder')?.dirty)&&this.registerForm.get('acholder')?.errors" style="color: red;">Invalid Account holder name</div>
+                <!--<div class="input-group mb-3">
+                    
+                    <select class="form-select" id="acc_type">
+                      <option selected>Select account type...</option>
+                      <option value="Savings">Savings</option>
+                      <option value="Current">Current</option>
+                     
+                    </select>
+                  </div>     -->           
+                <div class="mb-3">  
+                    <input type="password" id="password" name="pwd" formControlName="pswd" placeholder="Enter password"class="form-control">
+                </div> 
+                <!--show error msg-->
+                <div *ngIf="(this.registerForm.get('pswd')?.touched ||this.registerForm.get('pswd')?.dirty)&&this.registerForm.get('pswd')?.errors" style="color: red;">Invalid Password... Ur password contains At least 8 characters,
+                  Lowercase letters,
+                  Uppercase letters,
+                  Numbers Special characters</div>               
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-success">Create Account</button>
+                    <p style="color:rgb(10, 8, 8);align-items:baseline;">Not a user? <a routerLink="">Login</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Div for register account ends here--></form>
+  </div>
+  
+  
